@@ -80,6 +80,4 @@ test:
 #
 production:
   <<: *default
-  database: render_one_production
-  username: render_one
-  password: <%= ENV['RENDER_ONE_DATABASE_PASSWORD'] %>
+  url: <%= ENV['DATABASE_URL'] %>
