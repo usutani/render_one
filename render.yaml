@@ -1,0 +1,18 @@
+databases:
+  - name: render_one
+    databaseName: render_one
+    user: render_one
+
+services:
+  - type: web
+    name: render_one
+    env: ruby
+    buildCommand: "./bin/render-build.sh"
+    startCommand: "bundle exec puma -C config/puma.rb"
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: render_one
+          property: connectionString
+      - key: RAILS_MASTER_KEY
+        sync: false
